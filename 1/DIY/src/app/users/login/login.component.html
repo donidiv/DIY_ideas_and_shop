@@ -1,0 +1,56 @@
+<body>
+    <!-- partial:index.partial.html -->
+    <div class="container">
+          <div class="text">
+             Login
+          </div>
+          <form [formGroup]="form" (ngSubmit)="login()">
+             <div class="form-row">
+                <div class="input-data">
+                   <input type="text" name="email" formControlName="email" required>
+                   <div class="underline"></div>
+                   <label for="">Email Address</label>
+                </div>
+                <ng-container *ngIf="form.get('email')?.touched">
+                  <p class="error" *ngIf="form.get('email')?.errors?.['required']">
+                    Email is required!
+                  </p>
+                  <p
+                    class="error"
+                    *ngIf="form.get('email')?.errors?.['appEmailValidator']"
+                  >
+                    Email is not valid!
+                  </p>
+                </ng-container>
+             </div>
+             <div class="form-row">
+                <div class="input-data">
+                   <input type="password" name="password" formControlName="password" required>
+                   <div class="underline"></div>
+                   <label for="">Password</label>
+                </div>
+                <ng-container *ngIf="form.get('password')?.touched">
+                  <p class="error" *ngIf="form.get('password')?.errors?.['required']">
+                    Password is required!
+                  </p>
+                  <p
+                    class="error"
+                    *ngIf="form.get('password')?.errors?.['minlength']"
+                  >
+                  Password must be at least
+                  {{form.get('password')?.errors?.['minlength']?.['requiredLength']}}
+                  characters!
+                  </p>
+                </ng-container>
+             </div>
+             <div class="form-row submit-btn">
+                <div class="input-data">
+                   <div class="inner"></div>
+                   <input type="submit" value="Login">
+                </div>
+             </div>
+          </form>
+          </div>
+    <!-- partial -->
+      
+    </body>
