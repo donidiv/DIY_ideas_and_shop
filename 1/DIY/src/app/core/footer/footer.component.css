@@ -1,0 +1,21 @@
+/* footer  */
+
+footer {
+    background: linear-gradient(115deg, #56d8e4 10%, #7700ad 90%);
+    ;
+    margin-top: 0em;
+    position: flex;
+    bottom: 2px;
+    width: 100%;
+    max-width: auto;
+}
+
+footer p {
+    margin: 5px;
+    padding: 5px;
+    font-size: 1em;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    text-decoration:solid;
+    color: white;
+}
