@@ -3,21 +3,30 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 exports.register = async (userData) => {
-  const user = await User.create(userData);
+  
+  try {
+    const user = await User.create(userData);
 
   const result = getAuthResult(user);
 
   return result;
+  } catch (error) {
+    alert('User already exists!')
+    throw new Error ('User already exists!')
+  }
 };
 
 exports.login = async ({ email, password }) => {
-  const user = await User.findOne({ email });
+  
+  try {
+    const user = await User.findOne({ email })
 
   if (!user) {
     throw new Error("Invalid username or password");
   }
 
   const isValid = await bcrypt.compare(password, user.password);
+
 
   if (!isValid) {
     throw new Error("Invalid username or password");
@@ -26,6 +35,10 @@ exports.login = async ({ email, password }) => {
   const result = getAuthResult(user);
 
   return result;
+  } catch (error) {
+    console.log(error.message);
+    return error.message
+  }
 };
 
 function getAuthResult(user) {

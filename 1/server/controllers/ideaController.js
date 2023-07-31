@@ -1,17 +1,17 @@
 const router = require('express').Router();
 
-const furnitureManager = require('../managers/furnitureManager');
+const ideaManager = require('../managers/ideaManager');
 
 router.get('/', async(req, res)=>{
 
-    const furnitures = await furnitureManager.getAll(req.query);
+    const ideas = await ideaManager.getAll(req.query);
 
-    res.json(furnitures);
+    res.json(ideas);
 });
 
 router.post('/', async(req, res)=>{
     try {
-      await furnitureManager.create({
+      await ideaManager.create({
         ...req.body,
         _ownerId: req.user._id});  
       res.status(204).end();
