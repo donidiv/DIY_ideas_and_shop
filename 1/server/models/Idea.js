@@ -1,15 +1,7 @@
 const mongoose = require('mongoose');
 
-const furnitureSchema = new mongoose.Schema({
-    make: {
-        type: String,
-        required: true,
-    },
-    model: {
-        type: String,
-        required: true,
-    },
-    year: {
+const IdeaSchema = new mongoose.Schema({
+    name: {
         type: String,
         required: true,
     },
@@ -25,17 +17,22 @@ const furnitureSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    material: {
-        type: String,
-        required: true,
-    },
+    likes: [{
+        type: mongoose.Types.ObjectId,
+        ref: 'User',
+    }],
+    comments: [{
+        type: mongoose.Types.ObjectId,
+        ref: 'User',
+    }],
     _ownerId: {
         type: mongoose.Types.ObjectId,
         ref: 'User',
-    }
+    },
+
 
 });
 
-const Furniture = mongoose.model('Furniture', furnitureSchema);
+const Idea = mongoose.model('Idea', IdeaSchema);
 
-module.exports = Furniture;
+module.exports = Idea;

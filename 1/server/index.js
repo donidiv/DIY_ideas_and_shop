@@ -1,19 +1,25 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const cookieParser = require('cookie-parser');
+
 
 const routes = require('./routes');
 const {auth} = require('./middlewares/authMiddleware');
 
 const app = express();
 
-mongoose.connect('mongodb://localhost:27017/probaDIY')
+mongoose.connect('mongodb://localhost:27017/DIY')
     .then(() => console.log('DB connected'))
     .catch(err => console.log(err));
 
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
-app.use(cors());
+app.use(cookieParser('SECRETSECRET'))
+app.use(cors({
+    origin: ['http://localhost:27017', 'http://localhost:4200'],
+    credentials: true
+}));
 app.use(auth);
 
 // app.use((req, res, next)=>{
@@ -24,10 +30,10 @@ app.use(auth);
 //     next();
 // });
 
-app.get('/', (req, res)=> {
+app.get('/api', (req, res)=> {
     res.send('RESTful service');
 });
 
 app.use(routes)
 
-app.listen(3030, ()=> console.log('RESTful server is listening on port 3030...'));
+app.listen(3000, ()=> console.log('RESTful server is listening on port 3000...'));
