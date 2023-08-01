@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+const {ObjectId} = mongoose.Schema.Types;
 
 const userSchema = new mongoose.Schema({
     firstName: {
@@ -23,7 +24,11 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true,
-    }
+    },
+    ideas: [{
+        type: ObjectId,
+        ref: "Idea"
+    }],
 
 });
 

@@ -7,6 +7,7 @@ import { CoreModule } from './core/core.module';
 import { UsersModule } from './users/users.module';
 import { HttpClientModule } from '@angular/common/http';
 import { appInterceptorProvider } from './app.interceptor';
+import { IdeaModule } from './idea/idea.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { appInterceptorProvider } from './app.interceptor';
     AppRoutingModule,
     CoreModule,
     UsersModule,
-    HttpClientModule
+    HttpClientModule,
+    IdeaModule
   ],
   providers: [appInterceptorProvider],
   bootstrap: [AppComponent]

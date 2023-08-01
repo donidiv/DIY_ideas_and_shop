@@ -1,15 +1,13 @@
 const mongoose = require('mongoose');
+const {ObjectId} = mongoose.Schema.Types;
 
 const IdeaSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
+        unique: true
     },
     description: {
-        type: String,
-        required: true,
-    },
-    price: {
         type: String,
         required: true,
     },
@@ -17,16 +15,25 @@ const IdeaSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    pieces: {
+        type: Number,
+        required: true,
+    },
+    price: {
+        type: Number,
+        required: true,
+    },
+
     likes: [{
-        type: mongoose.Types.ObjectId,
+        type: ObjectId,
         ref: 'User',
     }],
     comments: [{
-        type: mongoose.Types.ObjectId,
+        type: ObjectId,
         ref: 'User',
     }],
     _ownerId: {
-        type: mongoose.Types.ObjectId,
+        type: ObjectId,
         ref: 'User',
     },
 

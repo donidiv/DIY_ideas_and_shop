@@ -9,35 +9,39 @@ router.get('/', async(req, res)=>{
     res.json(ideas);
 });
 
-router.post('/', async(req, res)=>{
+router.post('/create', async(req, res)=>{
     try {
+        console.log([req.cookies['cookie']._id, 'req cookie owner id']);
       await ideaManager.create({
         ...req.body,
-        _ownerId: req.user._id});  
+        _ownerId: req.cookies['cookie']._id
+    });  
       res.status(204).end();
     } catch (err) {
-        console.log(err);
+        console.log(err.message);
         res.status(400).json({
             message: 'Can not create !',
-        })        
+            
+        })  
+              
     }
     
 });
 
-router.get('/:furnitureId', async (req, res)=>{
-    const furniture = await furnitureManager.getOne(req.params.furnitureId);
+router.get('/:ideaId', async (req, res)=>{
+    const idea = await ideaManager.getOne(req.params.ideaId);
 
-    res.json(furniture);
+    res.json(idea);
 });
 
-router.put('/:furnitureId', async (req, res) => {
-    await furnitureManager.update(req.params.furnitureId, req.body);
+router.put('/:ideaId', async (req, res) => {
+    await ideaManager.update(req.params.ideaId, req.body);
 
     res.status(204).end();
 });
 
-router.delete('/:furnitureId', async (req, res) => {
-    await furnitureManager.delete(req.params.furnitureId);
+router.delete('/:ideaId', async (req, res) => {
+    await ideaManager.delete(req.params.ideaId);
 
     res.status(204).end();
 });
