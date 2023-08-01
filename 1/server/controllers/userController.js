@@ -14,7 +14,7 @@ router.post('/register', async (req, res) => {
         // res.json(result);
 
         //return jwt as cookie
-        res.cookie('Doni\'s Cookies', result, { httpOnly: true, }) // { httpOnly: true, sameSite: 'none', secure: true } research
+        res.cookie('cookie', result, { httpOnly: true, }) // { httpOnly: true, sameSite: 'none', secure: true } research
         res.status(200)
                 .send(result);
     } catch (err) {
@@ -36,10 +36,13 @@ router.post('/login', async (req, res)=> {
         // res.json(result);
 
         //return jwt as cookie
-        res.cookie('Doni\'s Cookies', result, { httpOnly: true, }) // { httpOnly: true, sameSite: 'none', secure: true } research
+        res.cookie('cookie', result, { httpOnly: true, }) // { httpOnly: true, sameSite: 'none', secure: true } research
+        
         console.log('post cookie');
+        console.log(result._id);
         res.status(200)
         .send(result);
+        
         
     } catch (err) {
         res.status(400).json({

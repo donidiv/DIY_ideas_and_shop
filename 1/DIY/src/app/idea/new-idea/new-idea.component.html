@@ -1,0 +1,112 @@
+<body>
+    <!-- partial:index.partial.html -->
+    <div class="container">
+          <div class="text">
+             Create DIY idea
+          </div>
+          <form [formGroup]="form" (ngSubmit)="createIdea()">
+             <div class="form-row">
+                <div class="input-data">
+                   <input type="text" name="name" formControlName="name" required>
+                   <div class="underline"></div>
+                   <label for="">Name</label>
+                </div>
+                <ng-container *ngIf="form.get('name')?.touched">
+                  <p class="error" *ngIf="form.get('name')?.errors?.['required']">
+                    Name is required!
+                  </p>
+                  <p
+                    class="error"
+                    *ngIf="form.get('name')?.errors?.['minlength']"
+                  >
+                  Name must be at least
+                  {{form.get('name')?.errors?.['minlength']?.['requiredLength']}}
+                  characters!
+                  </p>
+                </ng-container>
+             </div>
+             <div class="form-row">
+                <div class="input-data">
+                   <input type="text" name="description" formControlName="description" required>
+                   <div class="underline"></div>
+                   <label for="">Description</label>
+                </div>
+                <ng-container *ngIf="form.get('description')?.touched">
+                  <p class="error" *ngIf="form.get('description')?.errors?.['required']">
+                    Description is required!
+                  </p>
+                  <p
+                    class="error"
+                    *ngIf="form.get('description')?.errors?.['minlength']"
+                  >
+                  Description must be at least
+                  {{form.get('description')?.errors?.['minlength']?.['requiredLength']}}
+                  characters!
+                  </p>
+                </ng-container>
+             </div>
+             <div class="form-row">
+                <div class="input-data">
+                   <input type="text" name="img" formControlName="img" required>
+                   <div class="underline"></div>
+                   <label for="">Image</label>
+                </div>
+                <ng-container *ngIf="form.get('img')?.touched">
+                  <p class="error" *ngIf="form.get('img')?.errors?.['required']">
+                    Image is required!
+                  </p>
+                  <p
+                    class="error"
+                    *ngIf="form.get('img')?.errors?.['pattern']"
+                  >
+                    Image is not valid!
+                  </p>
+                </ng-container>
+             </div>
+             <div class="form-row">
+                <div class="input-data">
+                   <input type="number" name="pieces" formControlName="pieces" required>
+                   <div class="underline"></div>
+                   <label for="">How many pieces did you make?</label>
+                </div>
+                <ng-container *ngIf="form.get('pieces')?.touched">
+                  <p class="error" *ngIf="form.get('pieces')?.errors?.['required']">
+                    Quantity is required!
+                  </p>
+                  <p
+                    class="error"
+                    *ngIf="form.get('pieces')?.errors?.['min']"
+                  >
+                    Quantity must be minimal 1!
+                  </p>
+                </ng-container>
+             </div>
+             <div class="form-row">
+                <div class="input-data">
+                   <input type="number" name="price" formControlName="price" required>
+                   <div class="underline"></div>
+                   <label for="">Price for one piece $:</label>
+                </div>
+                <ng-container *ngIf="form.get('price')?.touched">
+                  <p class="error" *ngIf="form.get('price')?.errors?.['required']">
+                    Price is required!
+                  </p>
+                  <p
+                    class="error"
+                    *ngIf="form.get('price')?.errors?.['min']"
+                  >
+                    Price must be minimal 1!
+                  </p>
+                </ng-container>
+             </div>
+             <div class="form-row submit-btn">
+                <div class="input-data">
+                   <div class="inner"></div>
+                   <input type="submit" value="Create">
+                </div>
+             </div>
+          </form>
+          </div>
+    <!-- partial -->
+      
+    </body>
