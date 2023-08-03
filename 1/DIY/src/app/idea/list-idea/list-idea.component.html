@@ -1,0 +1,23 @@
+
+<body>
+    <div>
+        <h1>DIY ideas list</h1>
+    </div>
+    <div class="card-container"></div>
+    <div *ngFor="let idea of ideaList">
+        <div class="container">
+            <div class="image">
+                <img src="{{idea.img}}" alt="{{idea.name}}">
+            </div>
+            <p>
+                <h2>{{idea.name | uppercase}}</h2>
+            <p>Created from:
+                <a href="{{idea._ownerId._id}}"> {{idea._ownerId.username}}</a>
+            </p>
+    
+            <p>
+                <a href="{{idea._id}}">Details</a>
+            </p>
+        </div>
+    </div>
+</body>

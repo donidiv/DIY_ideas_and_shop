@@ -6,5 +6,6 @@ export interface Idea {
     description: string,
     pieces: number,
     price: number,
-    _ownerId: User
+    _ownerId: User,
+    _id: string,
 }
