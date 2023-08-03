@@ -1,7 +1,7 @@
 const Idea = require('../models/Idea');
 
 exports.getAll = async(qs) => {
-    let query = Idea.find();
+    let query = Idea.find().populate('_ownerId');
 
     if (qs.where) {
         let [fieldName, ownerId] = qs.where.split('=');

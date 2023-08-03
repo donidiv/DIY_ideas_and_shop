@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Idea } from '../types/idea';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -8,9 +9,6 @@ import { Idea } from '../types/idea';
 export class IdeaService {
 
   constructor(private http: HttpClient) { }
-
-
-
 
   createIdea(name: string,
     img: string,
@@ -22,5 +20,11 @@ export class IdeaService {
         description,
         pieces,
         price,});
+    }
+
+
+    getIdeas() {
+      const {apiUrl} = environment;
+      return this.http.get<Idea[]>(`${apiUrl}/ideas`)
     }
 }

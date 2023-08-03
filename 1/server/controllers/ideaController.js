@@ -15,7 +15,7 @@ router.post('/create', async(req, res)=>{
       await ideaManager.create({
         ...req.body,
         _ownerId: req.cookies['cookie']._id
-    });  
+    }).populate('User');  
       res.status(204).end();
     } catch (err) {
         console.log(err.message);
