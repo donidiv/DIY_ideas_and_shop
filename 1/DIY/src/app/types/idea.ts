@@ -1,3 +1,4 @@
+import { Comment } from "./comments";
 import { User } from "./user";
 
 export interface Idea {
@@ -8,4 +9,6 @@ export interface Idea {
     price: number,
     _ownerId: User,
     _id: string,
+    likes: [],
+    comments: any,
 }

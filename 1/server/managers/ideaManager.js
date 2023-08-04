@@ -12,7 +12,7 @@ exports.getAll = async(qs) => {
     return result;
 }
 
-exports.getOne = (ideaId) => Idea.findById(ideaId);
+exports.getOne = (ideaId) => Idea.findById(ideaId).populate('_ownerId');
 
 exports.create = (ideaData) => Idea.create(ideaData);
 

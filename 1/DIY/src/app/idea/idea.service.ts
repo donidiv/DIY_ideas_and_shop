@@ -27,4 +27,9 @@ export class IdeaService {
       const {apiUrl} = environment;
       return this.http.get<Idea[]>(`${apiUrl}/ideas`)
     }
+
+    getIdea(id:string) {
+      const {apiUrl} = environment;
+      return this.http.get<Idea>(`${apiUrl}/ideas/${id}/details`);
+    }
 }

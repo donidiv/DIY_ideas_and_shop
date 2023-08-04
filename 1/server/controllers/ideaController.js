@@ -15,7 +15,7 @@ router.post('/create', async(req, res)=>{
       await ideaManager.create({
         ...req.body,
         _ownerId: req.cookies['cookie']._id
-    }).populate('User');  
+    });  
       res.status(204).end();
     } catch (err) {
         console.log(err.message);
@@ -28,7 +28,7 @@ router.post('/create', async(req, res)=>{
     
 });
 
-router.get('/:ideaId', async (req, res)=>{
+router.get('/:ideaId/details', async (req, res)=>{
     const idea = await ideaManager.getOne(req.params.ideaId);
 
     res.json(idea);
