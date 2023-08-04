@@ -11,12 +11,12 @@
             </div>
             <p>
                 <h2>{{idea.name | uppercase}}</h2>
-            <p>Created from:
-                <a href="{{idea._ownerId._id}}"> {{idea._ownerId.username}}</a>
+            <p>Created by:
+                <a routerLink="{{idea._ownerId._id}}"> {{idea._ownerId.username}}</a>
             </p>
     
             <p>
-                <a href="{{idea._id}}">Details</a>
+                <a routerLink="/ideas/{{idea._id}}/details">Details</a>
             </p>
         </div>
     </div>

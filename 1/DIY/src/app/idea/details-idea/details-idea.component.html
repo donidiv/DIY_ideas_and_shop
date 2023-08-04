@@ -1,0 +1,57 @@
+<body>
+  <div class="container">
+    <div *ngIf="idea">
+      <div class="tittle">
+        <h2>{{ idea.name | uppercase }}</h2>
+        <button>Edit</button> <button>Delete</button>
+      </div>
+      <div class="image">
+        <img src="{{ idea.img }}" alt="" />
+      </div>
+
+      <div class="like">
+        <button>Like!</button> {{idea.likes.length}}
+      </div>
+
+      <div class="owner">
+        Created by:
+        <a routerLink="{{ idea._ownerId._id }}">
+          {{ idea._ownerId.username }}</a
+        >
+      </div>
+      <div class="info">
+        <p>{{ idea.description }}</p>
+      </div>
+      <div class="price">
+        <p>Price: {{idea.price | currency}}</p>        
+      </div>
+      <div class="pieces">
+        <p>Available pieces: {{idea.pieces}}</p>
+      </div>
+      <div class="buy">
+        <button>Buy!</button>
+      </div>
+      
+
+      <div class="comm">
+        <form >
+            <input type="text" name="comment" id="">
+            <button>POST</button>
+        </form>
+      </div>
+
+      <div class="comms" *ngIf="idea.comments.length != 0 then comments else noComments"></div>
+      <ng-template #comments>
+        <div>
+            <p>{{idea.comments.userId}} says: {{idea.comments.comment}}</p>
+        </div>
+      </ng-template>
+      <ng-template #noComments>
+        <p>{{idea.name | uppercase}} still don't have any comments... </p>
+      </ng-template>
+
+
+
+    </div>
+  </div>
+</body>
