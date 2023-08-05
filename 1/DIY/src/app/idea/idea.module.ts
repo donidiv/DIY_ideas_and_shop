@@ -5,6 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ListIdeaComponent } from './list-idea/list-idea.component';
 import { IdeaRoutingModule } from './idea-routing.module';
 import { DetailsIdeaComponent } from './details-idea/details-idea.component';
+import { UpdateIdeaComponent } from './update-idea/update-idea.component';
 
 
 
@@ -12,7 +13,8 @@ import { DetailsIdeaComponent } from './details-idea/details-idea.component';
   declarations: [
     NewIdeaComponent,
     ListIdeaComponent,
-    DetailsIdeaComponent
+    DetailsIdeaComponent,
+    UpdateIdeaComponent
   ],
   imports: [
     CommonModule,

@@ -1,4 +1,5 @@
 import { Comment } from "./comments";
+import { Like } from "./like";
 import { User } from "./user";
 
 export interface Idea {
@@ -9,6 +10,6 @@ export interface Idea {
     price: number,
     _ownerId: User,
     _id: string,
-    likes: [],
+    likes: Like[],
     comments: any,
 }

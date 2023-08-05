@@ -17,5 +17,20 @@ exports.getOne = (ideaId) => Idea.findById(ideaId).populate('_ownerId');
 exports.create = (ideaData) => Idea.create(ideaData);
 
 exports.update = (ideaId, ideaData) => Idea.findByIdAndUpdate(ideaId, ideaData);
+exports.like = async (ideaId, like, userId) =>{ 
+    const idea = await Idea.findById(ideaId)
 
-exports.delete = (ideaData) => Idea.findByIdAndDelete(ideaData);
+    if (like) {
+        idea.likes.push(userId)
+        console.log('liked');
+
+        // Idea.findByIdAndUpdate(ideaId, {$push: { likes: userId }})
+    } else if (!like) {
+        console.log('disliked');
+        idea.likes.pull(userId);
+        // Idea.findByIdAndUpdate(ideaId, {$pull: { likes: userId }})
+    }
+    await idea.save()
+    } 
+
+exports.delete = (ideaId) => Idea.findByIdAndDelete(ideaId);

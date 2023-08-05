@@ -23,13 +23,32 @@ export class IdeaService {
     }
 
 
+    editIdea(id:string, form: any){
+      return this.http.put<Idea>(`/api/ideas/${id}/update`, {id, ...form});
+
+    }
+
+
     getIdeas() {
-      const {apiUrl} = environment;
-      return this.http.get<Idea[]>(`${apiUrl}/ideas`)
+      return this.http.get<Idea[]>(`/api/ideas`)
     }
 
     getIdea(id:string) {
-      const {apiUrl} = environment;
-      return this.http.get<Idea>(`${apiUrl}/ideas/${id}/details`);
+      return this.http.get<Idea>(`/api/ideas/${id}/details`);
+    }
+
+
+    deleteIdea(id:string) {
+      return this.http.delete<Idea>(`/api/ideas/${id}/details`);
+    }
+
+
+    likeIdea(id:string){ 
+      return this.http.put<Idea>(`/api/ideas/${id}/details`, {like: true });
+    }
+
+    dislikeIdea(id:string){
+      return this.http.put<Idea>(`/api/ideas/${id}/details`, {like: false});
     }
 }
+
