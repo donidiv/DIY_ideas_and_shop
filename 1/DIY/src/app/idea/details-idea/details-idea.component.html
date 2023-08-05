@@ -3,19 +3,26 @@
     <div *ngIf="idea">
       <div class="tittle">
         <h2>{{ idea.name | uppercase }}</h2>
-        <button>Edit</button> <button>Delete</button>
+        <button routerLink="/ideas/{{idea._id}}/update">Edit</button> <button (click)="deleteIdea()">Delete</button>
       </div>
       <div class="image">
         <img src="{{ idea.img }}" alt="" />
       </div>
 
-      <div class="like">
+<ng-container *ngIf="!isOwner">
+        <div class="like" *ngIf="!isLiked" (click)="likeHandler()">
         <button>Like!</button> {{idea.likes.length}}
       </div>
 
+      <div class="dislike" *ngIf="isLiked" (click)="dislikeHandler()">
+        <button>Unlike!</button> {{idea.likes.length}}
+      </div>
+</ng-container>
+
+
       <div class="owner">
         Created by:
-        <a routerLink="{{ idea._ownerId._id }}">
+        <a routerLink="/users/{{ idea._ownerId._id }}/profile">
           {{ idea._ownerId.username }}</a
         >
       </div>

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { NewIdeaComponent } from "./new-idea/new-idea.component";
 import { ListIdeaComponent } from "./list-idea/list-idea.component";
 import { DetailsIdeaComponent } from "./details-idea/details-idea.component";
+import { UpdateIdeaComponent } from "./update-idea/update-idea.component";
 
 
 const routes: Routes = [
@@ -21,6 +22,10 @@ const routes: Routes = [
             {
                 path: ":ideaId/details",
                 component: DetailsIdeaComponent
+            },
+            {
+                path: ":ideaId/update",
+                component: UpdateIdeaComponent
             }
         ]
     }

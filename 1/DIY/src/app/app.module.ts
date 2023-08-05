@@ -8,10 +8,12 @@ import { UsersModule } from './users/users.module';
 import { HttpClientModule } from '@angular/common/http';
 import { appInterceptorProvider } from './app.interceptor';
 import { IdeaModule } from './idea/idea.module';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -21,7 +23,7 @@ import { IdeaModule } from './idea/idea.module';
     HttpClientModule,
     IdeaModule
   ],
-  providers: [appInterceptorProvider],
+  providers: [appInterceptorProvider,  CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
