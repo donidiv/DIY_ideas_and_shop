@@ -28,6 +28,8 @@ const IdeaSchema = new mongoose.Schema({
         type: ObjectId,
         ref: 'User',
     }],
+    
+    
     comments: [{
         type: ObjectId,
         ref: 'User',

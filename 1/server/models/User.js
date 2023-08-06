@@ -30,6 +30,13 @@ const userSchema = new mongoose.Schema({
         ref: "Idea"
     }],
 
+    bought: [{
+        type: Object,
+    }],
+    sold: [{
+        type: Object,
+    }]
+
 });
 
 userSchema.pre('save', async function() {
