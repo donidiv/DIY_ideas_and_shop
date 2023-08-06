@@ -2,12 +2,18 @@ const router = require('express').Router();
 
 const ideaManager = require('../managers/ideaManager');
 
-router.get('/', async(req, res)=>{
+// router.get('/', async(req, res)=>{
 
-    const ideas = await ideaManager.getAll(req.query);
+//     const ideas = await ideaManager.getAll(req.query);
+
+//     res.json(ideas);
+// });
+
+router.get('/catalog', async(req, res)=>{
+    const ideas = await ideaManager.getAllIdeas();
 
     res.json(ideas);
-});
+})
 
 router.post('/create', async(req, res)=>{
     try {
@@ -34,12 +40,21 @@ router.get('/:ideaId/details', async (req, res)=>{
     res.json(idea);
 });
 router.put('/:ideaId/details', async (req, res) => {//me
-    console.log([req.cookies['cookie']._id, 'req cookie owner id']);
-    console.log(req.params.ideaId, req.body, );
-
-
+    // console.log([req.cookies['cookie']._id, 'req cookie owner id']);
+    // console.log(req.params.ideaId, req.body, );
     try {
     await ideaManager.like(req.params.ideaId, req.body.like, req.cookies['cookie']._id);
+    // console.log(req.body, "req.body");
+    res.status(204).end();
+        
+    } catch (error) {
+        console.log(error);
+    }
+
+});
+router.put('/:ideaId/details/buy', async (req, res) => {//me
+    try {
+    await ideaManager.buy(req.params.ideaId, req.body.buy,  req.cookies['cookie']._id);
     res.status(204).end();
         
     } catch (error) {

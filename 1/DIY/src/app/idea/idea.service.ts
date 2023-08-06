@@ -30,7 +30,7 @@ export class IdeaService {
 
 
     getIdeas() {
-      return this.http.get<Idea[]>(`/api/ideas`)
+      return this.http.get<Idea[]>(`/api/ideas/catalog`)
     }
 
     getIdea(id:string) {
@@ -49,6 +49,10 @@ export class IdeaService {
 
     dislikeIdea(id:string){
       return this.http.put<Idea>(`/api/ideas/${id}/details`, {like: false});
+    }
+
+    buyIdea(id:string){
+      return this.http.put<Idea>(`/api/ideas/${id}/details/buy`, {buy: true});
     }
 }
 
