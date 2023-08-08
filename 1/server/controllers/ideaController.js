@@ -54,7 +54,18 @@ router.put('/:ideaId/details', async (req, res) => {//me
 });
 router.put('/:ideaId/details/buy', async (req, res) => {//me
     try {
-    await ideaManager.buy(req.params.ideaId, req.body.buy,  req.cookies['cookie']._id);
+    await ideaManager.buy(req.params.ideaId, req.body.buy, req.cookies['cookie']._id);
+    res.status(204).end();
+        
+    } catch (error) {
+        console.log(error);
+    }
+
+});
+
+router.post('/:ideaId/details/comment', async (req, res) => {//me
+    try {
+    await ideaManager.comment(req.params.ideaId, req.body.comment, req.cookies['cookie']._id);
     res.status(204).end();
         
     } catch (error) {

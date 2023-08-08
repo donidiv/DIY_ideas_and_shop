@@ -41,16 +41,37 @@
       
 
       <div class="comm">
-        <form >
-            <input type="text" name="comment" id="">
-            <button>POST</button>
+        <form [formGroup]="form" (ngSubmit)="commentIdea()">
+          <p>Write comment:</p>
+            <input type="text" name="comment" formControlName="comment" id="">
+            <button [disabled]="form.invalid">💭</button>
+            <ng-container *ngIf="form.get('comment')?.touched">
+              <p class="error" *ngIf="form.get('comment')?.errors?.['required']" >
+                Comment is required!
+              </p>
+              <p class="error" *ngIf="form.get('comment')?.errors?.['minlength']" >
+                Comment must be at least
+                  {{form.get('comment')?.errors?.['minlength']?.['requiredLength']}}
+                  characters long!
+              </p>
+
+            </ng-container>
         </form>
       </div>
 
       <div class="comms" *ngIf="idea.comments.length != 0 then comments else noComments"></div>
-      <ng-template #comments>
-        <div>
-            <p>{{idea.comments.userId}} says: {{idea.comments.comment}}</p>
+      <ng-template #comments > Comments:
+        <div *ngFor="let comm of idea.comments">  
+          <div >  
+            <!-- <p>{{comm.split(' | ').slice(0,1).toString()}}</p>
+            <p>{{comm.split(' | ').slice(1,2).toString()}}</p>
+            <p>{{comm.split(' | ').slice(2,3).toString()}}</p> -->
+            <a routerLink="/users/{{ comm.split(' | ').slice(0,1).toString() }}/profile">
+              {{ comm.split(' | ').slice(1,2).toString() }}</a>
+              says: {{comm.split(' | ').slice(2,3).toString()}}
+              <!-- <p>{{comm.split(' | ').slice(2,3).toString()}}</p> -->
+          </div>
+            
         </div>
       </ng-template>
       <ng-template #noComments>
