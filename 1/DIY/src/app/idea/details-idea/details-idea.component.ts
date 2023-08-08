@@ -4,6 +4,7 @@ import { IdeaService } from '../idea.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from 'src/app/users/user.service';
 import { CookieService } from 'ngx-cookie-service';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-details-idea',
@@ -11,6 +12,13 @@ import { CookieService } from 'ngx-cookie-service';
   styleUrls: ['./details-idea.component.css'],
 })
 export class DetailsIdeaComponent implements OnInit {
+
+  form = this.fb.group({
+    comment: ['', [Validators.required, Validators.minLength(10)]],
+  })
+
+
+
   idea: Idea | undefined;
   isLiked: boolean | undefined;
   // jwtToken: string =
@@ -21,8 +29,10 @@ export class DetailsIdeaComponent implements OnInit {
     private ideaService: IdeaService,
     private cookieService: CookieService,
     private activatedRoute: ActivatedRoute,
-    private userService: UserService,
-    private router: Router
+    // private userService: UserService,
+    private router: Router,
+    private fb: FormBuilder
+
   ) {}
 
   //todo maybe?
@@ -104,6 +114,25 @@ export class DetailsIdeaComponent implements OnInit {
   buyIdea(): void {
     const id = this.activatedRoute.snapshot.params['ideaId'];
     this.ideaService.buyIdea(id).subscribe((idea) => {
+      console.log(idea);
+      this.fetchIdea();
+    });
+    console.log(id);
+  }
+
+  commentIdea(): void {
+
+    if(this.form.invalid){
+      console.log('invalid');
+      return
+    }
+    console.log('valid');
+    
+    const {comment} = this.form.value;
+
+
+    const id = this.activatedRoute.snapshot.params['ideaId'];
+    this.ideaService.commentIdea(id, comment as string).subscribe((idea) => {
       console.log(idea);
       this.fetchIdea();
     });

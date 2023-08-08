@@ -40,7 +40,7 @@ export class UserService implements OnDestroy{
         username,
         email,
         password,
-        rePass
+        rePass,
       }).pipe(tap((user) => this.user$$.next(user)));
     }
 

@@ -54,5 +54,9 @@ export class IdeaService {
     buyIdea(id:string){
       return this.http.put<Idea>(`/api/ideas/${id}/details/buy`, {buy: true});
     }
+
+    commentIdea(id:string, comment: string){
+      return this.http.post<Idea>(`/api/ideas/${id}/details/comment`, {comment});
+    }
 }
 
