@@ -18,7 +18,14 @@ exports.getAllIdeas = async () => Idea.find().populate("_ownerId");
 
 exports.getOne = (ideaId) => Idea.findById(ideaId).populate("_ownerId");
 
-exports.create = (ideaData) => Idea.create(ideaData);
+exports.create = async (ideaData) => {
+  const idea = await Idea.create(ideaData);
+  const owner = await User.findById(idea._ownerId._id);
+  console.log(owner);
+  console.log(idea);
+  owner.ideas.push(idea._id);
+  await owner.save();
+}
 
 exports.update = (ideaId, ideaData) => Idea.findByIdAndUpdate(ideaId, ideaData);
 exports.like = async (ideaId, like, userId) => {

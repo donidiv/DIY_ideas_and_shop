@@ -9,10 +9,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { appInterceptorProvider } from './app.interceptor';
 import { IdeaModule } from './idea/idea.module';
 import { CookieService } from 'ngx-cookie-service';
+import { AuthenticateComponent } from './authenticate/authenticate.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    AuthenticateComponent,
     
   ],
   imports: [

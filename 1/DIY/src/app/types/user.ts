@@ -6,5 +6,6 @@ export interface User {
     _id: string,
     bought: [],
     sold: [],
+    ideas: []
     
 }

@@ -2,6 +2,8 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes} from "@angular/router";
 import { RegisterComponent } from "./register/register.component";
 import { LoginComponent } from "./login/login.component";
+import { ProfileComponent } from "./profile/profile.component";
+import { BalanceComponent } from "./balance/balance.component";
 
 const routes: Routes = [
     {
@@ -15,7 +17,14 @@ const routes: Routes = [
         //todo canActivate??
         
     },
-    //todo profile
+    {
+        path: 'profile/personalInfo',
+        component: ProfileComponent,
+    },
+    {
+        path: 'profile/balance',
+        component: BalanceComponent,
+    },
 ];
 
 @NgModule({

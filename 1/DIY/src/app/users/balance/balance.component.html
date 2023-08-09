@@ -1,0 +1,39 @@
+<body>
+
+    <h1>My balance</h1>
+    
+    <table id="customers" *ngIf="user">
+      <tr>
+        <th>DIY idea name</th>
+        <th>Price</th>
+        <th>Quantity</th>
+      </tr>
+      <tr id="sold">
+        <td colspan="3">Sold</td>
+        
+      </tr>
+      <tr *ngFor="let use of user.sold">
+        
+        <td>{{use.split(' | ').slice(1,2).toString()}}</td>
+        <td>$ {{use.split(' | ').slice(2,3).toString()}}</td>
+        <td>{{use.split(' | ').slice(3,4).toString()}}</td>        
+      </tr>
+
+      <tr id="bought">
+        <td colspan="3">Bought</td>
+        
+      </tr>
+      <tr *ngFor="let use of user.bought">
+        <!-- <td>Berglunds snabbköp</td> -->
+        <td>{{use.split(' | ').slice(1,2).toString()}}</td>
+        <td>$ {{use.split(' | ').slice(2,3).toString()}}</td>
+        <td>{{use.split(' | ').slice(3,4).toString()}}</td>        
+      </tr>
+
+      <tr id="total">
+        <td colspan="3">TOTAL: ${{total}}</td>
+      </tr>
+    </table>
+    
+    
+    </body>
