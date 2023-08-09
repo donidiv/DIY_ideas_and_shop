@@ -42,6 +42,16 @@ exports.login = async ({ email, password }) => {
   }
 };
 
+exports.getUser = async (userId) => User.findById(userId); 
+exports.updateUser = async(userId, userData) => User.findByIdAndUpdate(userId, userData);
+
+
+
+
+
+
+
+
 function getAuthResult(user) {
   const payload = {
     _id: user._id,
@@ -57,4 +67,7 @@ function getAuthResult(user) {
   };
 
   return result;
+
+
+  
 }

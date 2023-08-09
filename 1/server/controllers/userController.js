@@ -56,5 +56,25 @@ router.get('/logout', (req, res) => {
     res.end();
 })
 
+router.get('/profile/personalInfo', async(req, res)=>{
+    // console.log(req.cookies['cookie']._id);
+    const user = await userManager.getUser(req.cookies['cookie']._id);
+    res.json(user);
+});
+
+router.put('/profile/personalInfo', async(req, res) => {
+
+    console.log(req.cookies['cookie']._id);
+    await userManager.updateUser(req.cookies['cookie']._id, req.body);
+    res.status(204).end();
+});
+
+router.get('/profile/balance', async(req, res)=>{
+    // console.log(req.cookies['cookie']._id);
+    const user = await userManager.getUser(req.cookies['cookie']._id);
+    res.json(user);
+});
+
+
 
 module.exports = router;

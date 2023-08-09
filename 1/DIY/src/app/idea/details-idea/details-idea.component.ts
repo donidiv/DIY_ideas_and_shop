@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Idea } from 'src/app/types/idea';
 import { IdeaService } from '../idea.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { UserService } from 'src/app/users/user.service';
 import { CookieService } from 'ngx-cookie-service';
 import { FormBuilder, Validators } from '@angular/forms';
 
