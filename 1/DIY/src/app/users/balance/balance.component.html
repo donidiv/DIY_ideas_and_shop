@@ -9,7 +9,7 @@
         <th>Quantity</th>
       </tr>
       <tr id="sold">
-        <td colspan="3">Sold</td>
+        <td colspan="3">Sold: ${{sumS}}</td>
         
       </tr>
       <tr *ngFor="let use of user.sold">
@@ -20,7 +20,7 @@
       </tr>
 
       <tr id="bought">
-        <td colspan="3">Bought</td>
+        <td colspan="3">Bought: ${{sumB}}</td>
         
       </tr>
       <tr *ngFor="let use of user.bought">

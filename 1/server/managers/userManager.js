@@ -42,7 +42,7 @@ exports.login = async ({ email, password }) => {
   }
 };
 
-exports.getUser = async (userId) => User.findById(userId); 
+exports.getUser = async (userId) => User.findById(userId).populate('ideas'); 
 exports.updateUser = async(userId, userData) => User.findByIdAndUpdate(userId, userData);
 
 
@@ -64,6 +64,7 @@ function getAuthResult(user) {
     _id: user._id,
     email: user.email,
     accessToken: token,
+    // isLogged: true//me
   };
 
   return result;

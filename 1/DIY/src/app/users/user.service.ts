@@ -13,11 +13,11 @@ export class UserService implements OnDestroy {
 
   user: User | undefined;
   USER_KEY = '[user]';
-  // static isLogged: boolean;
+  static isLogged: boolean;
 
-  // get isLogged() : boolean {
-  //   return !!this.user;
-  // }
+  get isLogged() : boolean {    
+    return !!this.user;
+  }
 
   subscription: Subscription;
 
@@ -78,6 +78,14 @@ export class UserService implements OnDestroy {
       .pipe(tap((user) => this.user$$.next(user)));
   }
 
+  logout(){
+    return this.http.post<User>('/api/users/logout', {}).pipe(tap(()=>this.user$$.next(undefined)));
+  }
+
+  getUsersIdeas(id: string){
+
+    return this.http.get<User>(`/api/users/${id}/profile`).pipe(tap((user) => user));
+  }
   
 
   ngOnDestroy(): void {

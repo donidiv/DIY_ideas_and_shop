@@ -1,10 +1,9 @@
-
 <body>
     <div>
-        <h1>DIY ideas list</h1>
+        <h1>{{user?.username}}'s DIY ideas:</h1>
     </div>
-    <div class="card-container"></div>
-    <div *ngFor="let idea of ideaList">
+    <div class="card-container">
+    <div *ngFor="let idea of user?.ideas">
         <div class="container">
             <div class="image">
                 <img src="{{idea.img}}" alt="{{idea.name}}">
@@ -12,12 +11,13 @@
             <p>
                 <h2>{{idea.name | uppercase}}</h2>
             <p>Created by:
-                <a routerLink="/users/{{idea._ownerId._id}}/profile"> {{idea._ownerId.username}}</a>
+                <a routerLink="/users/{{user._id}}/profile"> {{user.username}}</a>
             </p>
     
             <p>
                 <a routerLink="/ideas/{{idea._id}}/details">Details</a>
             </p>
         </div>
+    </div>
     </div>
 </body>

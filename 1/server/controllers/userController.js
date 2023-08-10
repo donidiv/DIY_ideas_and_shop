@@ -52,13 +52,25 @@ router.post('/login', async (req, res)=> {
     
 })
 
-router.get('/logout', (req, res) => {
-    res.end();
+router.post('/logout', async(req, res) => {
+    try {
+        console.log('pre logout');
+        res.clearCookie('cookie')
+        res.status(200)
+        .send({message: 'Logged out!'});
+        
+        
+    } catch (err) {
+        res.status(400).json({
+            message: err.message
+        })
+    }
+
 })
 
 router.get('/profile/personalInfo', async(req, res)=>{
     // console.log(req.cookies['cookie']._id);
-    const user = await userManager.getUser(req.cookies['cookie']._id);
+    const user = await userManager.getUser(req.cookies['cookie']?._id);
     res.json(user);
 });
 
@@ -72,6 +84,12 @@ router.put('/profile/personalInfo', async(req, res) => {
 router.get('/profile/balance', async(req, res)=>{
     // console.log(req.cookies['cookie']._id);
     const user = await userManager.getUser(req.cookies['cookie']._id);
+    res.json(user);
+});
+
+router.get('/:userId/profile', async(req, res)=>{
+    // console.log(req.cookies['cookie']._id);
+    const user = await userManager.getUser(req.params.userId);
     res.json(user);
 });
 
