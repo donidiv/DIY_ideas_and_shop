@@ -3,13 +3,13 @@
     <div *ngIf="idea">
       <div class="tittle">
         <h2>{{ idea.name | uppercase }}</h2>
-        <button routerLink="/ideas/{{idea._id}}/update">Edit</button> <button (click)="deleteIdea()">Delete</button>
+        <button routerLink="/ideas/{{idea._id}}/update" *ngIf="isLogged && isOwner">Edit</button> <button (click)="deleteIdea()" *ngIf="isLogged && isOwner">Delete</button>
       </div>
       <div class="image">
         <img src="{{ idea.img }}" alt="" />
       </div>
 <div class="likes" >Likes: {{idea.likes.length}}
-<ng-container *ngIf="!isOwner">
+<ng-container *ngIf="isLogged && !isOwner">
         <div class="like" *ngIf="!isLiked" (click)="likeHandler()">
         <button>Like 💕</button> {{idea.likes.length}}
       </div>
@@ -35,13 +35,13 @@
       <div class="pieces">
         <p>Available pieces: {{idea.pieces}}</p>
       </div>
-      <div class="buy" (click)="buyIdea()">
+      <div class="buy" (click)="buyIdea()" *ngIf="isLogged && !isOwner">
         <button>Buy! 💲</button>
       </div>
       
 
       <div class="comm">
-        <form [formGroup]="form" (ngSubmit)="commentIdea()">
+        <form [formGroup]="form" (ngSubmit)="commentIdea()" *ngIf="isLogged && !isOwner">
           <p>Write comment:</p>
             <input type="text" name="comment" formControlName="comment" id="">
             <button [disabled]="form.invalid">💭</button>

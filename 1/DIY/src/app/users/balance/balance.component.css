@@ -27,16 +27,20 @@
     
   }
   #customers #sold{
-    background-color: #69199a;
+    background-color: #9671e0;
     
   }
   #customers #bought{
-    background-color: #69199a;
+    background-color: #9671e0;
     
   }
 
   #customers #total{
     text-align: center;
+    background-color: #1fdaeb;
+    border: 3px solid #000000;
+    padding: 8px;
+    font-size: larger;
     
   }
   

@@ -10,6 +10,8 @@ import { User } from 'src/app/types/user';
 export class BalanceComponent implements OnInit {
   user: User | undefined | any;
   total: number | undefined | any;
+  sumB: number | undefined | any;
+  sumS: number | undefined | any;
 
   constructor(private userService: UserService) {}
 
@@ -20,29 +22,34 @@ export class BalanceComponent implements OnInit {
 
       console.log(user.bought);
       console.log(user.sold);
-      let sumB = 0;
-      let sumS = 0;
+      this.sumB = 0;
+      this.sumS = 0;
 
       for (let i = 0; i < user.bought.length; i++) {
         let pr: string = user.bought[i];
         console.log(pr);
 
-        const userB = Number(pr.split(' | ').slice(2,3).toString()) * Number(pr.split(' | ').slice(3,4).toString());
-        sumB =+ userB;
-        console.log(sumB);
+        let userB = Number(pr.split(' | ').slice(2,3).toString()) * Number(pr.split(' | ').slice(3,4).toString());
+        this.sumB = this.sumB + userB;
+        console.log(this.sumB, "bought by piece");
+        console.log(userB, "userB");
+        
       }
 
       for (let i = 0; i < user.sold.length; i++) {
         let pr: string = user.sold[i];
         console.log(pr);
 
-        const userS = Number(pr.split(' | ').slice(2,3).toString()) * Number(pr.split(' | ').slice(3,4).toString());
-        sumS =+ userS;
-        console.log(sumS);
+        let userS = Number(pr.split(' | ').slice(2,3).toString()) * Number(pr.split(' | ').slice(3,4).toString());
+        this.sumS = this.sumS+ userS;
+        console.log(this.sumS);
       }
 
-      this.total = sumS - sumB;
-      console.log(this.total);
+      this.total = this.sumS - this.sumB;
+      console.log(this.sumS, 'sold');
+      console.log(this.sumB, 'bought');
+      
+      console.log(this.total, "total");
 
     });
 
