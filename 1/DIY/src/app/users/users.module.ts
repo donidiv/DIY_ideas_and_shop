@@ -7,6 +7,7 @@ import { UsersRoutingModule } from './users-routing.module';
 import { ProfileComponent } from './profile/profile.component';
 import { BalanceComponent } from './balance/balance.component';
 import { UserIdeasComponent } from './user-ideas/user-ideas.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -21,7 +22,8 @@ import { UserIdeasComponent } from './user-ideas/user-ideas.component';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    UsersRoutingModule
+    UsersRoutingModule,
+    SharedModule,
   ],
   exports: [
     // RegisterComponent,

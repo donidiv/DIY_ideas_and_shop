@@ -8,9 +8,8 @@ import { AuthActivate } from "../core/guards/auth.activate";
 
 
 const routes: Routes = [
-    {
-        path: "ideas",
-        children: [
+    
+       
             {
                 path: "catalog",
                 component: ListIdeaComponent,
@@ -29,8 +28,8 @@ const routes: Routes = [
                 path: ":ideaId/update",
                 component: UpdateIdeaComponent
             }
-        ]
-    }
+        
+    
 ];
 
 @NgModule({
