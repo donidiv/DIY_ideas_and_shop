@@ -10,11 +10,20 @@ import { appInterceptorProvider } from './app.interceptor';
 import { IdeaModule } from './idea/idea.module';
 import { CookieService } from 'ngx-cookie-service';
 import { AuthenticateComponent } from './authenticate/authenticate.component';
+import { HomeComponent } from './home/home.component';
+import { WelcomeComponent } from './welcome/welcome.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { SharedModule } from './shared/shared.module';
+import { WelocomeNoUserComponent } from './welcome/welocome-no-user/welocome-no-user.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AuthenticateComponent,
+    HomeComponent,
+    WelcomeComponent,
+    NotFoundComponent,
+    WelocomeNoUserComponent,
     
   ],
   imports: [
@@ -23,7 +32,8 @@ import { AuthenticateComponent } from './authenticate/authenticate.component';
     CoreModule,
     UsersModule,
     HttpClientModule,
-    IdeaModule
+    IdeaModule,
+    SharedModule
   ],
   providers: [appInterceptorProvider,  CookieService],
   bootstrap: [AppComponent]

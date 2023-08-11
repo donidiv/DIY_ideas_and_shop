@@ -8,15 +8,15 @@ import {
 } from '@angular/common/http';
 import { Observable, catchError } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
+import { Router } from '@angular/router';
+import { ErrorService } from './core/error/error.service';
 
 const {apiUrl} = environment
 
 @Injectable()
 export class AppInterceptor implements HttpInterceptor {
 
-  constructor(
-    // todo private router: Router, private errorService: ErrorService
-  ) {}
+  constructor(private router: Router, private errorService: ErrorService) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     if(request.url.startsWith('/api')){
@@ -27,7 +27,15 @@ export class AppInterceptor implements HttpInterceptor {
     }
 
     return next.handle(request).pipe(catchError((err)=>{
-      // todo make error service...
+      this.errorService.setError(err);
+
+      if(err.status === 401){
+        this.router.navigate(['/users/login']);
+      } else {
+        this.errorService.setError(err);
+        this.router.navigate(['/error']);
+        // this.router.navigate(['/users/register']);//proba
+      }
       return [err];
     }))
   }

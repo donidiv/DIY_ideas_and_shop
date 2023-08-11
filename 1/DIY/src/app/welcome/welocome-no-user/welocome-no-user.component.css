@@ -3,7 +3,7 @@
   margin: 5px;
   padding: 0px;
   outline: none;
-  box-sizing: border-box;
+  box-sizing: 100%;
   font-family: 'Poppins', sans-serif;
 }
 
@@ -21,31 +21,33 @@ body{
   text-align: center;
 }
 div{
-  padding: 2px 5px 5px 0px;
+  /* padding: 2px 5px 5px 0px; */
   margin: 0;
+  display: flex;
+  flex-direction: column
+  
  
 
 }
-.container{
-  max-width: 400px;
+/* .container{
+  max-width: 100%;
   background: #fff;
   width: 800px;
   padding: 25px 40px 10px 0px;
   box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
   border-radius: 5%;
-  
-
-
-  
+  text-align: center;
+} */
+div.body {
+    max-width: 100%;
+    display: flex;
 }
 
 img{
-
-    max-width: 400px;
-    width: 800px;
-    padding: 50px 50px 50px 50px;
-    border-radius: 5%;
+  max-width: 100px;
 }
+
+
 
 
 /*
@@ -227,3 +229,49 @@ p.error {
 .input-error {
   border-left-color: red;
 }
+
+.wave {
+  animation-name: wave-animation;  /* Refers to the name of your @keyframes element below */
+  animation-duration: 2.5s;        /* Change to speed up or slow down */
+  animation-iteration-count: infinite;  /* Never stop waving :) */
+  transform-origin: 70% 70%;       /* Pivot around the bottom-left palm */
+  display: inline-block;
+}
+
+@keyframes wave-animation {
+    0% { transform: rotate( 0.0deg) }
+   10% { transform: rotate(14.0deg) }  /* The following five values can be played with to make the waving more or less extreme */
+   20% { transform: rotate(-8.0deg) }
+   30% { transform: rotate(14.0deg) }
+   40% { transform: rotate(-4.0deg) }
+   50% { transform: rotate(10.0deg) }
+   60% { transform: rotate( 0.0deg) }  /* Reset for the last half to pause */
+  100% { transform: rotate( 0.0deg) }
+}
+
+
+
+
+/* For demonstration purposes only: */
+body { font-size: 2em }
+h1 { font-size: 2em }
+p {text-align: center;}
+button{
+  overflow: hidden;
+  height: 45px!important;
+  border-radius: 5%;
+  box-shadow: 0px 0px 30px rgb(111, 241, 255);
+  left: 0;
+  background: linear-gradient(115deg, #56d8e4 10%, #9f01ea 90%);;
+  border: none;
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+  width: 10%!important;
+}
+

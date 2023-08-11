@@ -11,7 +11,7 @@ import { IdeaService } from '../idea.service';
 export class ListIdeaComponent implements OnInit{
   ideaList: Idea[] = [];
   owners: User[] = [];
-  // isLoading
+  isLoading: boolean = true;
 
     constructor(private ideaService: IdeaService) {}
 
@@ -27,10 +27,10 @@ export class ListIdeaComponent implements OnInit{
         
         this.ideaList = ideas;
 
-        // this.isLoading = false;
+        this.isLoading = false;
       },
       error: (err) => {
-        // this.isLoading = false;
+        this.isLoading = false;
         console.error(`Error: ${err}`);
         
       }

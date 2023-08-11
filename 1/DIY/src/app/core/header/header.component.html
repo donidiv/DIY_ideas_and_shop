@@ -1,50 +1,45 @@
 <header>
-    <div class="mini-navbar-wrap">
-      <div class="logo-wrap">
-        <p class="logo"><span class="logo">DIY IDEAS & SHOP</span></p>
-      </div>
-      
+  <div class="mini-navbar-wrap">
+    <div class="logo-wrap">
+      <!-- <p class="logo"><span class="logo">DIY IDEAS & SHOP</span></p> -->
+      <img src="../../../assets/diy-ideas-shop-logo-removebg-preview.png" alt="">
     </div>
-    <nav>
-      
-      <ul *ngIf="!isLoggedIn">       
-        <li>
-          <a routerLink="/home">Home</a>
-        </li>
-        <li>
-          <a routerLink="/ideas/catalog">DIY ideas</a>
-        </li> 
-        <li>
-          <a routerLink="/users/login">Login</a>
-        </li>
-        <li>
-          <a routerLink="/users/register">Register</a>
-        </li>
-      </ul>
+  </div>
+  <nav>
+    <ul *ngIf="!isLoggedIn">
+      <li>
+        <a routerLink="/home">Home</a>
+      </li>
+      <li>
+        <a routerLink="/ideas/catalog">DIY ideas</a>
+      </li>
+      <li>
+        <a routerLink="/users/login">Login</a>
+      </li>
+      <li>
+        <a routerLink="/users/register">Register</a>
+      </li>
+    </ul>
 
-      <ul *ngIf="isLoggedIn">
-        <li>
-          <a routerLink="/home">Home</a>
-        </li>
-        <li>
-          <a routerLink="/ideas/catalog">DIY ideas</a>
-        </li>
-        <li>
-          <a routerLink="/ideas/create">Create DIY idea</a>
-        </li>
-          <li>
+    <ul *ngIf="isLoggedIn">
+      <li>
+        <a routerLink="/home">Home</a>
+      </li>
+      <li>
+        <a routerLink="/ideas/catalog">DIY ideas</a>
+      </li>
+      <li>
+        <a routerLink="/ideas/create">Create DIY idea</a>
+      </li>
+      <li>
         <a routerLink="/users/profile/personalInfo">My profile</a>
       </li>
       <li>
         <a routerLink="/users/profile/balance">Balance</a>
       </li>
       <li (click)="logout()">
-        <a >Logout</a>
+        <a>Logout</a>
       </li>
     </ul>
-      
-      
-
-    </nav>
-  </header>
-  
+  </nav>
+</header>
