@@ -1,20 +1,30 @@
 <div *ngIf="!isLogged">
-       
-    <app-welocome-no-user></app-welocome-no-user>       
-    
+  <app-welocome-no-user></app-welocome-no-user>
 </div>
-
-
 
 
 <div *ngIf="isLogged">
+  <hr>
+  <div class="title">
+    
+      <h1>Welcome back, {{ user?.firstName }} {{ user?.lastName }}!!! <span class="wave">👋🏼</span></h1>
+    
+  </div>
+  <hr>
 
-<div>
-    <h1>DIY ideas list</h1>
-</div>
-  
-<body> 
-  
+
+  <div *ngIf="user?.ideas.length == 0">
+    <div class="title">
+        <h1>You don't have any products yet...😔</h1>
+      </div>
+  </div>
+
+  <div *ngIf="user?.ideas.length > 0">
+  <div class="title">
+    <h1>My DIY products:</h1>
+  </div>
+
+  <body>
     <div class="card-container"></div>
     <div *ngFor="let idea of user?.ideas">
       <div class="container">
@@ -25,9 +35,7 @@
         <h2>{{ idea.name | uppercase }}</h2>
         <p>
           Created by:
-          <a routerLink="/users/{{ user._id }}/profile">
-            {{ user.username}}</a
-          >
+          <a routerLink="/users/{{ user._id }}/profile"> {{ user.username }}</a>
         </p>
 
         <p>
@@ -35,6 +43,6 @@
         </p>
       </div>
     </div>
-  
-</body>
+  </body>
+</div>
 </div>

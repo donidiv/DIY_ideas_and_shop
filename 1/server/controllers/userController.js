@@ -77,8 +77,9 @@ router.get('/profile/personalInfo', async(req, res)=>{
 router.put('/profile/personalInfo', async(req, res) => {
 
     console.log(req.cookies['cookie']._id);
-    await userManager.updateUser(req.cookies['cookie']._id, req.body);
-    res.status(204).end();
+    const user = await userManager.updateUser(req.cookies['cookie']?._id, req.body);
+    // res.status(204).end();
+    res.json(user);
 });
 
 router.get('/profile/balance', async(req, res)=>{

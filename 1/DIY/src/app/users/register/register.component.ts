@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { appEmailValidator } from 'src/app/shared/validators/app-email.validator';
 import { matchPasswordsValidator } from 'src/app/shared/validators/match-passwords-validator';
 import { UserService } from '../user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -26,9 +27,7 @@ export class RegisterComponent {
     ),
   })
 
-  constructor(private fb: FormBuilder, private userService: UserService
-    // todo router: Router
-    ) {}
+  constructor(private fb: FormBuilder, private userService: UserService, private router: Router) {}
   register(): void {
     //
     if(this.form.invalid){
@@ -40,7 +39,7 @@ export class RegisterComponent {
 
     this.userService.register(firstName!, lastName!, username!, email!, password!, rePass!).subscribe(() => {
     console.log('ok');
-      // todo navigate to???
+    this.router.navigate(['/home'])
       
     })
     

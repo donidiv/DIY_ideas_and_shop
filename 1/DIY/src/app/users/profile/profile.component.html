@@ -2,24 +2,23 @@
     <!-- partial:index.partial.html -->
 
     <!-- read only -->
+    
     <ng-container *ngIf="!isEditMode">
-        <div>
-            <p>First name:</p>
-            <p>{{profileDetails.firstName}}</p>
+      <div class="container">
+        <div class="p">
+            <p>First name: {{profileDetails.firstName}}</p>
         </div>
-        <div>
-            <p>Last name:</p>
-            <p>{{profileDetails.lastName}}</p>
+        <div class="p">
+            <p>Last name: {{profileDetails.lastName}}</p>
         </div>
-        <div>
-            <p>Email:</p>
-            <p> {{profileDetails.email}} </p>
+        <div class="p">
+            <p>Email: {{profileDetails.email}}</p>
         </div>
-        <div>
-            <p>Username:</p>
-            <p> {{profileDetails.username}} </p>
+        <div class="p">
+            <p>Username: {{profileDetails.username}}</p>
         </div>
         <button (click)="toggleEditMode()">Edit</button>
+      </div>
 
     </ng-container>
 
@@ -109,12 +108,12 @@
         </div>
   
         
-        <div class="form-row submit-btn">
+        <div class="btn">
           <div class="input-data">
             <div class="inner"></div>
             <!-- <input type="submit" value="Register!" [disabled]="form.invalid"> -->
-            <button>Edit</button>
-            <button>Cancel</button>
+            <button>Edit</button><button>Cancel</button>
+            
           </div>
         </div>
       </form>

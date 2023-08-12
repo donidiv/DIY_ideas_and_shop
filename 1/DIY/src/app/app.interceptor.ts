@@ -28,13 +28,11 @@ export class AppInterceptor implements HttpInterceptor {
 
     return next.handle(request).pipe(catchError((err)=>{
       this.errorService.setError(err);
-
       if(err.status === 401){
         this.router.navigate(['/users/login']);
       } else {
         this.errorService.setError(err);
         this.router.navigate(['/error']);
-        // this.router.navigate(['/users/register']);//proba
       }
       return [err];
     }))

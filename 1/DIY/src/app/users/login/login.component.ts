@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { appEmailValidator } from 'src/app/shared/validators/app-email.validator';
 import { UserService } from '../user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -15,8 +16,7 @@ export class LoginComponent {
   })
 
   
-  constructor(private fb: FormBuilder, private userService: UserService
-    // todo private router: Router
+  constructor(private fb: FormBuilder, private userService: UserService, private router: Router
     ) {}
 
   login(): void {
@@ -32,7 +32,7 @@ export class LoginComponent {
 
    this.userService.login(email!, password!).subscribe(() => {
     console.log('logged!');
-    // !    this.router.navigate(['/themes']);
+    this.router.navigate(['/home']);
     
 
    })

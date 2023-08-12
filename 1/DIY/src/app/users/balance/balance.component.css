@@ -46,3 +46,10 @@
     
   }
   
+  .title {
+    display: flex;
+    align-content: center;
+    justify-content: space-evenly;
+    color: #9f01ea;
+    font-family: 'Poppins', sans-serif;
+}

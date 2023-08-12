@@ -1,23 +1,35 @@
-<body>
-    <div>
-        <h1>{{user?.username}}'s DIY ideas:</h1>
+<div *ngIf="user">
+  <div *ngIf="user?.ideas.length == 0">
+    <div class="title">
+      <h1>User {{user.username}} hasn't any products yet!</h1>
     </div>
-    <div class="card-container">
-    <div *ngFor="let idea of user?.ideas">
+  </div>
+
+  <div *ngIf="user?.ideas.length > 0">
+    <div class="title">
+      <h1>{{user.username}}'s DIY products:</h1>
+    </div>
+  
+    <body>
+      <div class="card-container"></div>
+      <div *ngFor="let idea of user?.ideas">
         <div class="container">
-            <div class="image">
-                <img src="{{idea.img}}" alt="{{idea.name}}">
-            </div>
-            <p>
-                <h2>{{idea.name | uppercase}}</h2>
-            <p>Created by:
-                <a routerLink="/users/{{user._id}}/profile"> {{user.username}}</a>
-            </p>
-    
-            <p>
-                <a routerLink="/ideas/{{idea._id}}/details">Details</a>
-            </p>
+          <div class="image">
+            <img src="{{ idea.img }}" alt="{{ idea.name }}" />
+          </div>
+          <p></p>
+          <h2>{{ idea.name | uppercase }}</h2>
+          <p>
+            Created by:
+            <a routerLink="/users/{{ user._id }}/profile"> {{ user.username }}</a>
+          </p>
+  
+          <p>
+            <a routerLink="/ideas/{{ idea._id }}/details">Details</a>
+          </p>
         </div>
-    </div>
-    </div>
-</body>
+      </div>
+    </body>
+  </div>
+  </div>
+  

@@ -15,7 +15,7 @@
       </div>
 
       <div class="dislike" *ngIf="isLiked" (click)="dislikeHandler()">
-        <button>Dislike 💔</button> {{idea.likes.length}}
+        <button>Dislike💔</button> {{idea.likes.length}}
       </div>
 </ng-container>
 </div>
@@ -27,7 +27,7 @@
         >
       </div>
       <div class="info">
-        <p>{{ idea.description }}</p>
+        <p>Description: {{ idea.description }}</p>
       </div>
       <div class="price">
         <p>Price: {{idea.price | currency}}</p>        
@@ -44,7 +44,7 @@
         <form [formGroup]="form" (ngSubmit)="commentIdea()" *ngIf="isLogged && !isOwner">
           <p>Write comment:</p>
             <input type="text" name="comment" formControlName="comment" id="">
-            <button [disabled]="form.invalid">💭</button>
+            <button [disabled]="form.invalid">Post💭</button>
             <ng-container *ngIf="form.get('comment')?.touched">
               <p class="error" *ngIf="form.get('comment')?.errors?.['required']" >
                 Comment is required!
