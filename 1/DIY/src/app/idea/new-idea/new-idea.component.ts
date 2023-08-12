@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { IdeaService } from '../idea.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-idea',
@@ -24,8 +25,8 @@ export class NewIdeaComponent {
 
   constructor(
     private fb: FormBuilder,
-    private ideaService: IdeaService
-  ) // todo private router: Router
+    private ideaService: IdeaService,private router: Router
+  ) 
   {}
 
   createIdea(): void {
@@ -42,7 +43,7 @@ export class NewIdeaComponent {
     this.ideaService
       .createIdea(name!, img!, description!, pieces!, price!)
       .subscribe(() => {
-        // todo navigate
+        this.router.navigate(['ideas/catalog'])
         console.log(this.form.value);
       });
   }

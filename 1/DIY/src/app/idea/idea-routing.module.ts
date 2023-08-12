@@ -26,7 +26,8 @@ const routes: Routes = [
             },
             {
                 path: ":ideaId/update",
-                component: UpdateIdeaComponent
+                component: UpdateIdeaComponent,
+                canActivate: [AuthActivate]
             }
         
     

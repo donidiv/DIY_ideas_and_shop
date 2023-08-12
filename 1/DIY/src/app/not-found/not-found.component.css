@@ -6,8 +6,8 @@
   }
   
   .err {
-    color: #95c2de;
-    font-family: "Nunito Sans", sans-serif;
+    color: #c56be0;
+    font-family: 'Poppins', sans-serif;
     font-size: 11rem;
     position: absolute;
     left: 20%;
@@ -23,8 +23,8 @@
   }
   
   .err2 {
-    color: #95c2de;
-    font-family: "Nunito Sans", sans-serif;
+    color: #6eaad0;
+    font-family: 'Poppins', sans-serif;
     font-size: 11rem;
     position: absolute;
     left: 68%;
@@ -33,7 +33,8 @@
   
   .msg {
     text-align: center;
-    font-family: "Nunito Sans", sans-serif;
+    font-family: 'Poppins', sans-serif;
+    text-decoration:solid;
     font-size: 1.6rem;
     position: absolute;
     left: 16%;
@@ -43,9 +44,18 @@
   
   a {
     text-decoration: none;
-    color: #95c2de;
+    color: #9661eb;
   }
   
   a:hover {
     text-decoration: underline;
   }
+
+  div.lds-heart {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+    transform: rotate(45deg);
+    transform-origin: 23px 406px;
+}

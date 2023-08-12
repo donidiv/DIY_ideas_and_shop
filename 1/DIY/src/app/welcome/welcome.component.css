@@ -3,7 +3,7 @@
   margin: 5px;
   padding: 0px;
   outline: none;
-  box-sizing: 100%;
+  box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
 
@@ -11,7 +11,8 @@ body{
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 50vh;
+  /* min-height: 50vh; */
+  max-width: 97vw;
   padding: 10px;
   font-family: 'Poppins', sans-serif;
   background: linear-gradient(115deg, #56d8e4 10%, #9f01ea 90%);
@@ -21,33 +22,32 @@ body{
   text-align: center;
 }
 div{
-  /* padding: 2px 5px 5px 0px; */
+  padding: 2px 5px 5px 0px;
   margin: 0;
-  display: flex;
-  flex-direction: column
-  
  
 
 }
-/* .container{
-  max-width: 100%;
-  background: #fff;
+.container{
+  max-width: 400px;
+  background: #ffffff60;
   width: 800px;
   padding: 25px 40px 10px 0px;
   box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
   border-radius: 5%;
-  text-align: center;
-} */
-div.body {
-    max-width: 100%;
-    display: flex;
+  
+
+
+  
 }
 
 img{
-  max-width: 100px;
+
+    max-width: 400px;
+    width: 80vw;
+    /* height: 800px; */
+    padding: 50px 50px 50px 50px;
+    border-radius: 5%;
 }
-
-
 
 
 /*
@@ -219,6 +219,20 @@ form .form-row .textarea{
     }
   }
 
+
+  .title {
+    display: flex;
+    align-content: center;
+    justify-content: space-evenly;
+    color: #9f01ea;
+}
+
+hr {
+  color: #9f01ea;
+  height: 5px;
+  background-color: #29e3dd;
+}
+
 p.error {
   text-align: left;
   border-radius: 0.3em;
@@ -230,5 +244,25 @@ p.error {
   border-left-color: red;
 }
 
+
+
+.wave {
+  animation-name: wave-animation;  /* Refers to the name of your @keyframes element below */
+  animation-duration: 2.5s;        /* Change to speed up or slow down */
+  animation-iteration-count: infinite;  /* Never stop waving :) */
+  transform-origin: 70% 70%;       /* Pivot around the bottom-left palm */
+  display: inline-block;
+}
+
+@keyframes wave-animation {
+    0% { transform: rotate( 0.0deg) }
+   10% { transform: rotate(14.0deg) }  /* The following five values can be played with to make the waving more or less extreme */
+   20% { transform: rotate(-8.0deg) }
+   30% { transform: rotate(14.0deg) }
+   40% { transform: rotate(-4.0deg) }
+   50% { transform: rotate(10.0deg) }
+   60% { transform: rotate( 0.0deg) }  /* Reset for the last half to pause */
+  100% { transform: rotate( 0.0deg) }
+}
 
 

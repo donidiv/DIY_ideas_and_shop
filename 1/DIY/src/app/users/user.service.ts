@@ -15,17 +15,19 @@ export class UserService implements OnDestroy {
   USER_KEY = '[user]';
   static isLogged: boolean;
 
-  get isLogged() : boolean {    
+  get isLogged(): boolean {
     return !!this.user;
   }
 
   subscription: Subscription;
 
   constructor(private http: HttpClient) {
+
+
     this.subscription = this.user$.subscribe((user) => {
       this.user = user;
-      // console.log(this.user);
-      
+      debugger;
+      console.log(this.user);
     });
   }
 
@@ -56,41 +58,51 @@ export class UserService implements OnDestroy {
   }
 
   getProfile() {
-    return this.http.get<User>('/api/users/profile/personalInfo').pipe(tap((user) => this.user$$.next(user)));
+    return this.http.get<User>('/api/users/profile/personalInfo').pipe(
+      tap((user) => {
+        this.user$$.next(user);
+        debugger;
+        console.log(this.user);
+      })
+    );
   }
-  getBalance(){
-    return this.http.get<User>('/api/users/profile/balance').pipe(tap((user) => this.user$$.next(user)));
+  getBalance() {
+    return this.http
+      .get<User>('/api/users/profile/balance')
+      .pipe(tap((user) => this.user$$.next(user)));
   }
 
   updateProfile(
     firstName: string,
     lastName: string,
     email: string,
-    username: string    
+    username: string
   ) {
     return this.http
       .put<User>('/api/users/profile/personalInfo', {
         firstName,
         lastName,
         email,
-        username,        
+        username,
       })
       .pipe(tap((user) => this.user$$.next(user)));
   }
 
-  logout(){
-    return this.http.post<User>('/api/users/logout', {}).pipe(tap(()=>this.user$$.next(undefined)));
+  logout() {
+    return this.http
+      .post<User>('/api/users/logout', {})
+      .pipe(tap(() => this.user$$.next(undefined)));
   }
 
-  getUsersIdeas(id: string){
-
-    return this.http.get<User>(`/api/users/${id}/profile`).pipe(tap((user) => user));
+  getUsersIdeas(id: string) {
+    return this.http
+      .get<User>(`/api/users/${id}/profile`)
+      .pipe(tap((user) => user));
   }
 
-  getUserIdeas(){
+  getUserIdeas() {
     return this.http.get<User>('/api/home').pipe(tap((user) => user));
   }
-  
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();

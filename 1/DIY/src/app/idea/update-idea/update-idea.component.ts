@@ -31,10 +31,10 @@ export class UpdateIdeaComponent implements OnInit {
 
   constructor(private ideaService: IdeaService, private activatedRoute: ActivatedRoute, private userService: UserService, private fb: FormBuilder, private router: Router) {}
 
-  //todo maybe?
-  // get isLogged():boolean{
-  //   return this.userService.isLogged;
-  // }
+  
+  get isLogged():boolean{
+    return this.userService.isLogged;
+  }
 
   ngOnInit(): void {
     this.fetchIdea()    
@@ -65,7 +65,7 @@ export class UpdateIdeaComponent implements OnInit {
     this.ideaService
       .editIdea(this.idea?._id as string, this.form.value)
       .subscribe(() => {
-        // todo navigate
+        this.router.navigate([`/ideas/${this.idea?._id}/details`])
         console.log(this.form.value);
       });
   }
